@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Pratham Bang",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -9.6, "left": -110.36, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -32,
+      "left": 24.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -32.4,
+      "left": 339.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 44.4,
+      "left": 339.8,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 121.2,
+      "left": 339.8,
+      "attrs": { "color": "blue" }
+    },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 20.7, "left": -311.3, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 147.95,
+      "left": 153.6,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-19.2", "v201.7", "h-115.2" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h0" ] ],
+    [ "lcd1:SDA", "esp:21", "yellow", [ "h-9.6", "v115.4" ] ],
+    [ "ultrasonic1:ECHO", "esp:18", "purple", [ "v124.8", "h210.4" ] ],
+    [ "ultrasonic1:TRIG", "esp:5", "cyan", [ "v134.4", "h230", "v-144" ] ],
+    [ "ultrasonic1:GND", "esp:GND.2", "black", [ "v28.8", "h94.8", "v-105.6" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "v38.4" ] ],
+    [ "r1:1", "esp:GND.2", "black", [ "v-9.6", "h-115.2" ] ],
+    [ "led1:C", "r1:2", "green", [ "v28.8", "h-38", "v105.6" ] ],
+    [ "led2:C", "r1:2", "green", [ "v28.8", "h-28.4", "v38.4" ] ],
+    [ "led3:C", "r1:2", "green", [ "v19.2", "h-76.4" ] ],
+    [ "led1:A", "esp:25", "red", [ "v28.8", "h-28.8", "v9.6" ] ],
+    [ "led2:A", "esp:26", "green", [ "v0" ] ],
+    [ "led3:A", "esp:27", "blue", [ "v38.4", "h-76.8", "v-76.8" ] ]
+  ],
+  "dependencies": {}
+}
